@@ -1,0 +1,25 @@
+# Local agent overrides stay local; AGENTS.md is tracked.
+.claude/
+CLAUDE.local.md
+AGENTS.override.md
+
+# Distribution
+/dist/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+npm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

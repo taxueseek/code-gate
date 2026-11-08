@@ -1,0 +1,37 @@
+name: test
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+# Only a pull request cancels its superseded run; every main push keeps its own
+# run so every merged commit is verified.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Pin Python (keep CI reproducible from local dev)
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install shellcheck
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck
+      - name: Bash syntax
+        run: |
+          set -euo pipefail
+          bash -n skills/code-gate/scripts/extract-review-scope.sh
+          bash -n tests/test_scope.sh
+          echo "bash -n: ok"
+      - name: Shellcheck (errors only)
+        run: shellcheck --severity=error skills/code-gate/scripts/extract-review-scope.sh tests/test_scope.sh
+      - name: Python syntax
+        run: python3 -m py_compile scripts/verify_release.py
+      - name: Release metadata checks
+        run: python3 scripts/verify_release.py
+      - name: Scope script smoke
+        run: bash tests/test_scope.sh
