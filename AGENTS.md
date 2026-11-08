@@ -26,7 +26,8 @@
 - **默认只读**：任何新能力不得在未显式 `--fix` / `--comment` 时写工作区或发远端内容；工作树保护铁律（不 `checkout` / `switch` / `reset --hard` / `stash` / `clean` / `gh pr checkout`）不得放宽。
 - **目录不膨胀**：不再新增同级技能，不新增含糊的 `utils` / `common` 模块。需要新能力时改进 `references/`、`scripts/` 或 `SKILL.md`。
 - **对外文本干净**：README、llms.txt 与技能正文不写本机路径、邮箱、令牌。`scripts/verify_release.py` 的隐私形状检查会拦。
-- **诚实描述**：README 只写已验证的能力。没在本仓跑通的安装路径、没有验证的宿主行为，不要写成结论。
+- **诚实描述**：README 只写已验证的能力。没在本仓跑通的安装路径、没有验证的宿主行为，不要写成结论。不用「工业级」这类无法验证的最高级形容词，改用具体能力描述。
+- **仓库结构表完整**：README 的仓库结构表必须列出所有对外可见的文件，包括 `VERSION`、`.claude-plugin/marketplace.json`、`llms.txt` 与 CI 配置；描述测试文件时按实际覆盖的项写，不夸大。
 
 ## 常用命令
 
