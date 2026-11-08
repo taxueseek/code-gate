@@ -155,7 +155,3 @@ actions:          --comment: 2 inline comments posted
 ## 许可
 
 MIT License，见 [LICENSE](LICENSE)。技能正文为中文，命令、字段与代码标识符保持英文。
-
-<br/>
-
-参考了 [tw93/Waza](https://github.com/tw93/Waza) 的仓库组织与发布设置：单技能一层目录、`npx skills add` 一行安装、插件市场清单、CI 只跑确定性校验。

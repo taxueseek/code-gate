@@ -108,7 +108,3 @@ One false positive teaches a reader to ignore the real defect, so the funnel rem
 ## License
 
 MIT, see [LICENSE](LICENSE).
-
-<br/>
-
-Repository organization and release setup follow [tw93/Waza](https://github.com/tw93/Waza).
